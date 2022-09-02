@@ -41,7 +41,7 @@ npm: up
 		$(filter-out $@,$(MAKECMDGOALS))
 install: up build
 	@echo ""
-	@echo "Downloading configuration..."
+	@echo "Downloading configuration files..."
 
     # 👇 DL configure-statamic-for-ddev, a custom command (shell script) within
     # the web container which makes things right for ddev.
@@ -52,8 +52,8 @@ install: up build
 	curl https://raw.githubusercontent.com/kerns/statamic-on-ddev/main/configure-statamic-for-ddev.sh -s -o .ddev/commands/web/configure-statamic-for-ddev.sh
 
 	@echo "*** DONE ***"
-	@ddev restart
 	@ddev configure-statamic-for-ddev
+	@ddev restart
 	@ddev describe
 	@ddev launch
 up:
