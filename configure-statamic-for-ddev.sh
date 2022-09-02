@@ -16,7 +16,7 @@ if [ -f "$html_root/.env" ]; then
 
     # Create a place for backups
     if [ ! -d $html_root/$ddev_path/backups ]; then
-        mkdir $html_root/$ddev_path/backups
+        mkdir -p $html_root/$ddev_path/backups
     fi
     
     # Backup the existing .env
