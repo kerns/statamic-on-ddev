@@ -50,6 +50,7 @@ if [ -f "$html_root/vite.config.js" ]; then
     
     # DL a new vite.config.js to the root dir
     curl https://raw.githubusercontent.com/kerns/statamic-on-ddev/main/vite.config.js -s -o $html_root/vite.config.js
+
 else
     echo "Sorry, no file found at $html_root/vite.config.js"
 fi
