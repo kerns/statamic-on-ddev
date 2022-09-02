@@ -42,10 +42,14 @@ fi
 # Configure the web env for ddev in .ddev/config.yaml
 sed -i '/web_environment: \[]/c web_environment: [\"VITE_APP_URL=\${DDEV_HOSTNAME}\"]' $html_root/.ddev/config.yaml
 
-# Create a backup of the existing vite config if it exists, and copy the new default
+# Create a backup of the existing vite config if it exists
 if [ -f "$html_root/vite.config.js" ]; then
+    
+    # Move the current vite.config.js to a 'backups' folder
     mv --backup=numbered $html_root/vite.config.js $html_root/$ddev_path/backups/vite.config.js.ddev-bak
-    curl <ADD LINK TO VITE CONFIG HERE> -o $html_root/vite.config.js //TODO
+    
+    # DL a new vite.config.js to the root dir
+    curl https://raw.githubusercontent.com/kerns/statamic-on-ddev/main/vite.config.js -s -o $html_root/vite.config.js
 else
     echo "Sorry, no file found at $html_root/vite.config.js"
 fi
